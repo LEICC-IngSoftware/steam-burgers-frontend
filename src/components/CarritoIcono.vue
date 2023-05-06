@@ -1,7 +1,7 @@
 <template>
     <div class="carrito-icono">
         <router-link to="/carrito">
-            <div v-if="items > 0" class="notificacion">{{ items }}</div>
+            <div v-show="items > 0" class="notificacion">{{ items }}</div>
             <i class="icono fa-solid fa-cart-shopping"></i>
         </router-link>
     </div>
