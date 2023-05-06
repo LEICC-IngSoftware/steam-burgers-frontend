@@ -1,18 +1,10 @@
 <template>
     <div class="topbar">
         <Slide>
-            <a id="home" href="#">
-                <router-link to="/"><span>Inicio</span></router-link>
-            </a>
-            <a id="home" href="#">
-                <router-link to="/menu">Menú</router-link>
-            </a>
-            <a id="home" href="#">
-                <span>Promoción</span>
-            </a>
-            <a id="home" href="#">
-                <span>Contacto</span>
-            </a>
+            <router-link to="/">Inicio</router-link>
+            <router-link to="/menu">Menú</router-link>
+            <router-link to="/promociones">Promociones</router-link>
+            <router-link to="/contacto">Contactanos</router-link>
             <div class="row iconos gap-4">
                 <div class="flex flex-col">
                     <img class="icono" src="/Facebook.png" />
