@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PaginaInicio from '@/components/PaginaInicio.vue'
 import PaginaMenu from '@/components/PaginaMenu.vue'
+import PaginaCarrito from '@/components/PaginaCarrito.vue'
+
 const routes = [
   {
     path: '/',
@@ -11,6 +13,11 @@ const routes = [
     path: '/menu',
     name: 'menu',
     component: PaginaMenu
+  },
+  {
+    path: '/carrito',
+    name: 'carrito',
+    component: PaginaCarrito
   }
 ]
 

@@ -1,15 +1,29 @@
 <template>
     <div class="carrito-icono">
-        <div class="notificacion">{{ items }}</div>
-        <i class="icono fa-solid fa-cart-shopping"></i>
+        <router-link to="/carrito">
+            <div class="notificacion">{{ items }}</div>
+            <i class="icono fa-solid fa-cart-shopping"></i>
+        </router-link>
     </div>
 </template>
 <script>
+import { mapState } from 'vuex';
+
 export default {
     data() {
         return {
-            items: 0,
+           
         };
+    },
+    computed: {
+        ...mapState(['carrito']),
+        items() {
+            const { carrito } = this;
+            if(!carrito || !Array.isArray(carrito) || carrito.length === 0) {
+                return 0;
+            }
+            return carrito.length;
+        },
     },
 }
 </script>
@@ -20,9 +34,13 @@ export default {
     transition: all 125ms;
     min-width: 50px;
     min-height: 50px;
-    margin: 20px;
+    // margin: 20px;
+    
+    a {
+        color: grey;
+    }
 
-    position: fixed;
+    position: relative;
     right: 0;
     &:hover {
         cursor: pointer;
@@ -39,7 +57,7 @@ export default {
     .notificacion {
         position: absolute;
         right: 5px;
-        top: 5px;
+        top: 3px;
         background-color: tomato;
         padding: 5px;
         border-radius: 50%;
