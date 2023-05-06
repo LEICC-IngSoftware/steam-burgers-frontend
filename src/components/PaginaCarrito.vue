@@ -3,10 +3,10 @@
         <SlideMenu />
         
         <div class="grid grid-cols-1 items-start">
-            <pre>
+            <!-- <pre>
                 {{ this.carrito }}
-            </pre>
-            <ComboPrecio 
+            </pre> -->
+            <ItemCarrito 
                 class="item-lista"
                 v-for="item in carrito" 
                 :key="`item-${item.id}`" 
@@ -14,20 +14,21 @@
                 :descripcion="item.descripcion" 
                 :precio="item.precio" 
                 :imagen="item.imagen"
-            ></ComboPrecio>
+                :item="item"
+            ></ItemCarrito>
         </div>
     </div>
 </template>
 
 <script>
     import SlideMenu from './SlideMenu.vue';
-    import ComboPrecio from './ComboPrecio.vue';
+    import ItemCarrito from './ItemCarrito.vue';
     import { mapState } from 'vuex';
 
     export default {
         components: {
             SlideMenu,
-            ComboPrecio
+            ItemCarrito
         },
         data() {
             

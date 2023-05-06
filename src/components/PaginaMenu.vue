@@ -33,6 +33,7 @@
                 :descripcion="item.descripcion" 
                 :precio="item.precio" 
                 :imagen="item.imagen"
+                :item="item"
             ></ComboPrecio>
         </div>
     </div>

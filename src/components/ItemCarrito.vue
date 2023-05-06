@@ -3,14 +3,19 @@
         <div class="flex flex-col xs7 lg3 contenedor-izquierda">
             <h3>{{ nombre }}</h3>
             <p class="descripcion">{{ descripcion }}</p>
+            <!-- <va-counter
+                v-model="cantidad"
+                messages="Cantidad"
+                
+            /> -->
             <va-button
                 large
                 color="warning"
                 icon-color="#812E9E"
                 class="mr-3 mb-2 price"
-                @click="agregarACarrito"
+                @click="eliminarProductoCarrito"
             >
-                Q.{{ precio }}   +
+                Eliminar
             </va-button>
         </div>
         <div class="flex flex-col xs5 lg2">
@@ -21,6 +26,7 @@
 
 <script>
     import { mapMutations } from 'vuex';
+
     export default{
         name: "ComboPrecio",
         props: {
@@ -30,11 +36,26 @@
             imagen: String,
             item: Object,
         },
+        data(){
+            return {
+                cantidad: 1,
+            };
+        },
+        watch:{
+            'item.cantidad': {
+
+            },
+        },
         methods: {
-            ...mapMutations(['agregarProducto']),
-            agregarACarrito() {
-                const { item, agregarProducto } = this;
-                agregarProducto(item);
+            ...mapMutations(['quitarProducto',]),
+            eliminarProductoCarrito() {
+                const { item, quitarProducto } = this;
+                quitarProducto(item);
+            },
+            cambioCantidad(item) {
+                console.log(item);
+                // eslint-disable-next-line no-debugger
+                debugger;
             },
         },
     }
