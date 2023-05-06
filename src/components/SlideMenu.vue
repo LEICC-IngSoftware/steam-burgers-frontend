@@ -25,20 +25,25 @@
                 </div>
             </div>
         </Slide>
+        <div class="cart-container">
+            <carrito-icono />
+        </div>
     </div>
 </template>
 
 <script>
   import { Slide } from 'vue3-burger-menu'  // import the CSS transitions you wish to use, in this case we are using `Slide`
+  import CarritoIcono from '@/components/CarritoIcono.vue'  // import the CSS transitions you wish to use, in this case we are using `Slide`
 
     export default {
         components: {
+            CarritoIcono,
             Slide // Register your component
         }
     }
 </script>
 
-<style>
+<style lang="scss">
     .bm-menu {
         background-color: #FFFFFF;
         color: #000000;
