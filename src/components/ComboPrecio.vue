@@ -1,9 +1,16 @@
 <template>
-    <div class="row justify-center">
-        <div class="flex flex-col xs7 lg2 contenedor-izquierda">
+    <div class="row justify-center combo">
+        <div class="flex flex-col xs7 lg3 contenedor-izquierda">
             <h3>{{ nombre }}</h3>
             <p class="descripcion">{{ descripcion }}</p>
-            <button>Q.{{ precio }}</button>
+            <va-button
+                large
+                color="warning"
+                icon-color="#812E9E"
+                class="mr-3 mb-2 price"
+            >
+                Q.{{ precio }}   +
+            </va-button>
         </div>
         <div class="flex flex-col xs5 lg2">
             <img class="imagen-producto" :src="imagen" />
@@ -25,7 +32,7 @@
 
 <style scoped>
     .contenedor-izquierda {
-        padding: 25px;
+        padding: 5px 25px;
         text-align: left;
     }
     h3 {
@@ -55,5 +62,14 @@
         background-color: white;
         padding: 15px;
         border-radius: 5px;
+    }
+    .combo {
+        background-color: #EAEAEA;
+        border-bottom: 1px solid #DCDCDC;
+    }
+    @media only screen and (min-width: 375px) {
+        .price {
+            min-width: 180px;
+        }
     }
 </style>
