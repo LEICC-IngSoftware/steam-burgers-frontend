@@ -10,12 +10,16 @@
             <div class="sobre">
                 <div class="titulo">Steam Burgers</div>
             </div>
-            <div class="button-container">
-                <router-link to="/menu">
-                    <button class="button-primary">Ver menu</button>
-                </router-link>
-            </div>
-
+            <router-link to="/menu" class="button-image">
+                <va-button
+                    color="warning"
+                    class="button"
+                    size="large"
+                    gradient
+                >
+                    Ver menu
+                </va-button>
+            </router-link>
         </div>
     </div>
 </template>
@@ -59,15 +63,20 @@
     }
     .va-image.portada {
         height: 550px;
+        position:relative;
+
     }
-    .button-primary {
-        position: absolute;
-        top: 500px;
-        left: 35%;
+    .button-image {
+        position:absolute;
+        bottom:30%;
+        right:50%;
+        width:200px;
+        height:40px;
+        margin: 0px -100px -20px 0px;
+    }
+    .button {
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
         background: #EDAF11;
-        width: 131px;
-        height: 38px;
     }
     .button-container {
         width: 100%;
