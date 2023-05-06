@@ -3,7 +3,7 @@
 </template>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto+Flex:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;500;700&display=swap');
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
