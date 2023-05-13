@@ -42,6 +42,7 @@
 <script>
     import SlideMenu from './SlideMenu.vue';
     import ComboPrecio from './ComboPrecio.vue';
+    import axios from 'axios';
     export default {
         components: {
             SlideMenu,
@@ -51,7 +52,8 @@
             return {
                 filtro: 'combo',
                 itemsFiltrados: [],
-                itemsMenu: [
+                itemsMenu: [],
+                itemsMenuLocal: [
                     {
                         id: 1,
                         nombre: "Combo 1",
@@ -125,7 +127,10 @@
             },
             setFiltro(filtro) {
                 this.filtro = filtro;
-            }
+            },
+            obtenerMenu() {
+                axios.get('http://localhost:3000/menu').then(response => {this.itemsMenu = response.data; this.filtrarMenu();});
+            },
         },
         watch: {
             filtro() {
@@ -133,6 +138,7 @@
             },
         },
         mounted() {
+            this.obtenerMenu();
             this.filtrarMenu();
         },
     }
