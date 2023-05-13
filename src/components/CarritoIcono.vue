@@ -7,24 +7,22 @@
     </div>
 </template>
 <script>
-import { mapState } from 'vuex';
 
 export default {
     data() {
         return {
-           
+           items: 0
         };
     },
     computed: {
-        ...mapState(['carrito']),
-        items() {
-            const { carrito } = this;
-            if(!carrito || !Array.isArray(carrito) || carrito.length === 0) {
-                return 0;
-            }
-            return carrito.length;
-        },
     },
+    mounted() {
+        this.items = JSON.parse(localStorage.getItem('carrito')).length;
+        this.emitter.on('cantidadCarrito', value => this.items = value)
+    },
+    beforeUnmount() {
+        this.emitter.all.clear()
+    }
 }
 </script>
 <style lang="scss">

@@ -33,12 +33,15 @@
                 :descripcion="item.descripcion" 
                 :precio="item.precio" 
                 :imagen="item.imagen"
+                :id="item.id"
+                :agregarCarrito="agregarCarrito"
             ></ComboPrecio>
         </div>
     </div>
 </template>
 
 <script>
+    import axios from 'axios';
     import SlideMenu from './SlideMenu.vue';
     import ComboPrecio from './ComboPrecio.vue';
     export default {
@@ -49,8 +52,10 @@
         data() {
             return {
                 filtro: 'combo',
+                carrito: [],
                 itemsFiltrados: [],
-                itemsMenu: [
+                itemsMenu: [],
+                itemsMenuLocal: [
                     {
                         id: 1,
                         nombre: "Combo 1",
@@ -124,6 +129,16 @@
             },
             setFiltro(filtro) {
                 this.filtro = filtro;
+            },
+            obtenerMenu() {
+                axios.get('http://localhost:3000/menu').then(response => {this.itemsMenu = response.data; this.filtrarMenu();});
+            },
+            agregarCarrito(id) {
+                console.log(id);
+                const elemento = this.itemsMenu.filter((elemento) => elemento.id === id)[0];
+                this.carrito.push(elemento);
+                localStorage.setItem('carrito',JSON.stringify(this.carrito));
+                this.emitter.emit('cantidadCarrito', this.carrito.length);
             }
         },
         watch: {
@@ -133,6 +148,9 @@
         },
         mounted() {
             this.filtrarMenu();
+            this.obtenerMenu();
+            const carritoLocal = localStorage.getItem('carrito');
+            this.carrito = carritoLocal ? JSON.parse(carritoLocal) : [];
         },
     }
 </script>

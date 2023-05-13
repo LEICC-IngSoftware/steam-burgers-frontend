@@ -1,56 +1,46 @@
 <template>
     <div >
         <SlideMenu />
-        
         <div class="grid grid-cols-1 items-start">
-            <pre>
-                {{ this.carrito }}
-            </pre>
-            <ComboPrecio 
-                class="item-lista"
-                v-for="item in carrito" 
-                :key="`item-${item.id}`" 
-                :nombre="item.nombre" 
-                :descripcion="item.descripcion" 
-                :precio="item.precio" 
-                :imagen="item.imagen"
-            ></ComboPrecio>
+            <ComboCarrito
+                v-for="elemento in carrito"
+                :key="elemento.id"
+                :id="elemento.id"
+                :nombre="elemento.nombre"
+                :descripcion="elemento.descripcion"
+                :precio="elemento.precio"
+                :imagen="elemento.imagen"
+                :eliminarCarrito="eliminarCarrito"
+            ></ComboCarrito>
         </div>
     </div>
 </template>
 
 <script>
     import SlideMenu from './SlideMenu.vue';
-    import ComboPrecio from './ComboPrecio.vue';
-    import { mapState } from 'vuex';
+    import ComboCarrito from './ComboCarrito.vue';
 
     export default {
         components: {
             SlideMenu,
-            ComboPrecio
+            ComboCarrito
         },
         data() {
-            
-        },
-        computed: {
-            ...mapState(['carrito'])
-        },
-        methods: {
-            filtrarMenu() {
-                this.itemsFiltrados = this?.itemsMenu?.filter((item) => item.tipo === this.filtro);
-            },
-            setFiltro(filtro) {
-                this.filtro = filtro;
+            return {
+                carrito: []
             }
         },
-        watch: {
-            filtro() {
-                this.filtrarMenu();
-            },
-        },
         mounted() {
-            // this.filtrarMenu();
+            const carritoLocal = localStorage.getItem('carrito');
+            this.carrito = carritoLocal ? JSON.parse(carritoLocal) : [];
         },
+        methods: {
+            eliminarCarrito(id) {
+                const elementos = this.carrito.filter((elemento) => elemento.id !== id);
+                this.carrito = elementos;
+                localStorage.setItem('carrito',JSON.stringify(this.carrito));
+            }
+        }
     }
 </script>
 

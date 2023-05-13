@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import PaginaInicio from '@/components/PaginaInicio.vue'
 import PaginaMenu from '@/components/PaginaMenu.vue'
 import PaginaCarrito from '@/components/PaginaCarrito.vue'
+import PaginaPromociones from '@/components/PaginaPromociones.vue'
 
 const routes = [
   {
@@ -13,6 +14,11 @@ const routes = [
     path: '/menu',
     name: 'menu',
     component: PaginaMenu
+  },
+  {
+    path: '/promociones',
+    name: 'promociones',
+    component: PaginaPromociones
   },
   {
     path: '/carrito',

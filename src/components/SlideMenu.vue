@@ -1,6 +1,6 @@
 <template>
     <div class="topbar">
-        <Slide>
+        <Slide :closeOnNavigation="closeOnNavigation" noOverlay>
             <router-link to="/">Inicio</router-link>
             <router-link to="/menu">Menú</router-link>
             <router-link to="/promociones">Promociones</router-link>
@@ -32,6 +32,11 @@
         components: {
             CarritoIcono,
             Slide // Register your component
+        },
+        data() {
+            return {
+                closeOnNavigation: true
+            }
         }
     }
 </script>
